@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="description" content="Turn leftover ingredients into a delicious recipe with Leftover Chef.">
+  <title>Leftover Chef — Make a meal from what you have</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+
+<body class="app-page">
+  <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">✳</span><span>leftover<span
+          class="brand-accent">chef</span></span></a>
+    <div class="top-actions"><button class="intro-replay" id="intro-replay" type="button" aria-label="Replay setup tour"
+        title="Replay setup tour">Tour</button><button class="theme-toggle" id="theme-toggle" type="button"
+        aria-label="Enable dark mode" aria-pressed="false"><span aria-hidden="true">☾</span></button></div>
+  </header>
+  <main class="container">
+    <section class="welcome-row">
+      <div class="hero-copy">
+        <div class="eyebrow">GOOD FOOD, LESS WASTE</div>
+        <h1>What’s in your <em>fridge?</em></h1>
+        <p class="muted">Pick what you have. Find a meal worth saving.</p>
+        <div class="hero-pills"><span>🌿 Flexible recipes</span><span>♻ Less food waste</span><span>🍽️ Simple,
+            easy-to-follow cooking</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span>🥬</span><span>🍅</span><span>🥕</span><i>✳</i></div>
+    </section>
+    <section class="how-strip" aria-label="How it works">
+      <div class="how-title"><span class="eyebrow">HOW IT WORKS</span><strong>Three easy steps</strong></div>
+      <div><b>01</b><span>Pick ingredients</span></div><span class="how-arrow">→</span>
+      <div><b>02</b><span>Get a recipe match</span></div><span class="how-arrow">→</span>
+      <div><b>03</b><span>Cook and enjoy</span></div>
+    </section>
+    <section class="judge-panel" id="judge-panel" aria-labelledby="judge-title">
+      <div class="judge-copy">
+        <div class="eyebrow">⚡ JUDGE QUICK CHECKS</div>
+        <h2 id="judge-title">Run a verification path</h2>
+        <p>One click loads a sample and shows the result.</p>
+      </div>
+      <div class="judge-buttons"><button class="judge-button" type="button" data-preset="standard"><span>STEP
+            01</span><strong>Standard match</strong></button><button class="judge-button" type="button"
+          data-preset="twist"><span>STEP 02</span><strong>3-ingredient match</strong></button><button
+          class="judge-button" type="button" data-preset="nomatch"><span>STEP 03</span><strong>Twist
+            no-match</strong></button></div>
+      <div class="judge-note" id="judge-note" aria-live="polite">Presets use the built-in sample recipe library; click
+        one to load its result.</div>
+    </section>
+    <section class="workspace">
+      <div class="panel ingredients-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="eyebrow">STEP 01 · PICK INGREDIENTS</div>
+            <h2>Build your basket</h2>
+          </div>
+          <div class="heading-actions"><span class="count-pill" id="selected-count">0 selected</span><label
+              class="three-mode-control" for="three-mode-toggle"><input id="three-mode-toggle" type="checkbox"
+                aria-label="Enable exact three-ingredient mode"><span class="three-mode-switch"
+                aria-hidden="true"></span><span>3-item mode</span></label></div>
+        </div>
+        <p class="muted small">Select the ingredients you have. Salt, oil, water, and common spices are assumed kitchen
+          staples. Non-veg options are grouped below.</p>
+        <div id="ingredient-groups" class="ingredient-groups"></div>
+        <div class="use-soon-panel" id="use-soon-panel" hidden>
+          <div class="use-soon-heading"><strong>Use soon</strong><span>Optional: mark anything close to expiry.</span>
+          </div>
+          <div id="use-soon-list" class="use-soon-list"></div>
+        </div>
+        <div class="compatible-panel" id="compatible-panel" hidden><span>💚</span>
+          <div id="compatible-message"></div>
+        </div>
+        <div class="selection-footer"><span id="selection-message" class="muted small" aria-live="polite">Your basket is
+            empty.</span><button class="button button-dark" id="find-recipe" type="button" disabled>Find my recipe
+            <span>→</span></button></div>
+      </div>
+      <aside class="side-column">
+        <div class="tip-card"><span class="tip-emoji">💡</span>
+          <div class="eyebrow">KITCHEN KNOW-HOW</div>
+          <h3>A small tip can save a lot.</h3>
+          <p>Simple storage and cooking ideas to help every ingredient go further.</p><button
+            class="button button-light" id="open-tips" type="button">Browse kitchen tips <span>→</span></button>
+        </div>
+      </aside>
+    </section>
+    <section class="results" id="results" hidden aria-live="polite"></section>
+    <footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">✳</span><span>leftover<span
+            class="brand-accent">chef</span></span></a><span>Recipes for the ingredients you have.</span><span
+        class="footer-note">Cook well. Waste less. 🌿</span></footer>
+  </main>
+  <dialog id="cook-dialog" class="cook-dialog">
+    <div id="cook-content"></div>
+  </dialog>
+  <dialog id="tips-dialog" class="cook-dialog tips-dialog">
+    <div class="cook-inner">
+      <div class="dialog-top">
+        <div class="eyebrow">💡 KITCHEN KNOW-HOW</div><button class="icon-button" id="close-tips"
+          aria-label="Close tips">×</button>
+      </div>
+      <div class="tip-count">A TIP FOR YOUR KITCHEN</div>
+      <h2 id="tip-title"></h2>
+      <p id="tip-body"></p>
+      <div class="dialog-actions"><button class="button button-outline" id="prev-tip" type="button">← Previous
+          tip</button><button class="button button-dark" id="next-tip" type="button">Next tip →</button></div>
+    </div>
+  </dialog>
+</body>
+
+</html>
